@@ -7,3 +7,4 @@ export * from './controller-maker';
 export * from './fixture-maker';
 export * from './model-test-maker';
 export * from './controller-test-maker'
+export * from './grape-api-maker'

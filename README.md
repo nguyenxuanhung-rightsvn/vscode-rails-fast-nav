@@ -12,6 +12,7 @@ Commands to move between files in a Rails application.
 - Switch to view [command.railsFastSwitchToView]
 - Switch to test/spec [command.railsFastSwitchToTest] + alias [command.railsFastSwitchToSpec]
 - Switch to fixture [command.railsFastSwitchToFixture]
+- Switch to grape api [command.railsSwitchToGrapeApi]
 - Create View [command.railsCreateView]
 - Create Spec [command.railsCreateSpec]
 
@@ -25,6 +26,11 @@ Set the Rails `app` directory if you have a non-standard directory layout:
 
 ```json
 "rails.appDir": "lib/app"
+```
+
+Change the default Rails `grape` directory from `app/grape` to `app/controller/grape`:
+```json
+"rails.grapeDir": "controllers/grape"
 ```
 
 Change the default view extension from `html.erb`:
