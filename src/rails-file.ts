@@ -152,6 +152,9 @@ export class RailsFile {
   isControllerTest() {
     return this.fileType === 'controllerTest'
   }
+  isGrapeApi() {
+    return this.isInAppDir('grapeApi');
+  }
 }
 
 /**
