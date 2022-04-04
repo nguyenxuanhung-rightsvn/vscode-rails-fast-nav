@@ -1,21 +1,24 @@
-import { SwitchFile } from '../types';
 import { RailsFile } from '../rails-file';
-import { RailsWorkspace, relativeToAppDir } from '../rails-workspace';
-import { appendWithoutExt } from '../path-utils';
+import { RailsWorkspace } from '../rails-workspace';
+import { SwitchFile } from '../types';
+import { pluralize } from 'inflected';
 import * as path from 'path';
 
-export function controllerTestMaker(
+export async function controllerTestMaker(
   railsFile: RailsFile,
   workspace: RailsWorkspace
-): SwitchFile[] {
-  return [
-    {
+): Promise<SwitchFile[]> {
+  return railsFile.possibleModelNames().map(possibleModelName => {
+    const controllerName = pluralize(possibleModelName) + '_controller_test.rb';
+
+    return {
+      checkedExists: false,
       filename: path.join(
-        workspace.controllerTestPath,
-        appendWithoutExt(relativeToAppDir(workspace, railsFile.filename), '_test')
+        workspace.controllersTestPath,
+        controllerName
       ),
-      title: 'Controller test file',
+      title: 'Controller test ' + controllerName,
       type: 'controllerTest',
-    },
-  ];
+    };
+  });
 }

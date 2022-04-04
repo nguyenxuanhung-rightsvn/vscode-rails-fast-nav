@@ -75,6 +75,7 @@ export class RailsFile {
     if (this.isModel()) return [this.withoutExt];
     if (this.isView()) return [singularize(path.basename(this.dirname))];
     if (this.isFixture()) return [singularize(this.withoutExt)];
+    if (this.isGrape()) return [this.withoutExt];
 
     const parts = this.withoutExt.split('_');
 
@@ -153,7 +154,10 @@ export class RailsFile {
     return this.fileType === 'controllerTest'
   }
   isGrapeApi() {
-    return this.isInAppDir('grapeApi');
+    return this.fileType === 'grapeApi';
+  }
+  isGrape() {
+    return this.fileType === 'grape';
   }
 }
 

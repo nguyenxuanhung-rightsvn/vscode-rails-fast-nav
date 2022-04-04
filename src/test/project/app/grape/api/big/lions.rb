@@ -1,0 +1,2 @@
+class Big::Lion 
+end

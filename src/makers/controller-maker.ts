@@ -10,6 +10,19 @@ export async function controllerMaker(
 ): Promise<SwitchFile[]> {
   return railsFile.possibleModelNames().map(possibleModelName => {
     const controllerName = pluralize(possibleModelName) + '_controller.rb';
+
+    if (railsFile.isGrape()) {
+      return {
+        checkedExists: false,
+        filename: path.join(
+          workspace.controllersPath,
+          controllerName
+        ),
+        title: 'Controller ' + controllerName,
+        type: 'controller',
+      };
+    }
+
     return {
       checkedExists: false,
       filename: path.join(

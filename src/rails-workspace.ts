@@ -34,8 +34,8 @@ export class RailsWorkspace {
     return path.join(this.path, 'test')
   }
 
-  get controllerTestPath(): string {
-    return path.join(this.path, 'test')
+  get controllersTestPath(): string {
+    return path.join(this.path, 'test', 'controllers')
   }
 
   get grapeApiPath(): string {
@@ -283,7 +283,7 @@ export function getControllerTestPath(
   );
 
   return path.join(
-    workspace.controllerTestPath,
+    workspace.controllersTestPath,
     appendWithoutExt(relFn(railsFile.filename), '_test')
   );
 }

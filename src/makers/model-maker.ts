@@ -33,6 +33,18 @@ export async function modelMaker(
     checkedExists: true,
   });
 
+  if (railsFile.isGrape()) {
+    return possibleModelNames.map(possibleModelName => {
+      const modelName = possibleModelName + '.rb';
+      return {
+        checkedExists: false,
+        filename: path.join(workspace.modelsPath, modelName),
+        title: `Model ${modelName}`,
+        type: 'model'
+      }
+    })
+  }
+
   if (railsFile.module.length > 0) {
     return models
       .filter(
